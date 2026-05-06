@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NOOK — LED Corner & Anamorphic 3D</title>
+<meta name="description" content="Rental de Corner LED y contenido anamórfico 3D para eventos, productoras y agencias. Únicos en LED corner en Argentina." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --bg-elev: #161616;
+    --ink: #f4f4ec;
+    --ink-dim: #8a8a82;
+    --line: #232323;
+    --lime: #c5d92d;
+    --lime-dim: #9ab022;
+    --grid-glow: rgba(197, 217, 45, 0.06);
+    --display: 'Bricolage Grotesque', serif;
+    --body: 'Inter Tight', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ LED grid texture (background) ============ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-glow) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-glow) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  /* ============ Noise overlay ============ */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  main, header, section, footer { position: relative; z-index: 2; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 22px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(14, 14, 14, 0.6);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  nav.scrolled { border-bottom-color: var(--line); }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .logo-mark {
+    width: 28px; height: 28px;
+    flex-shrink: 0;
+  }
+  .logo-mark path { stroke: var(--lime); stroke-width: 2; fill: none; }
+  .logo-text {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.32em;
+  }
+  .logo-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--ink-dim);
+    margin-left: 6px;
+  }
+
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--lime); }
+
+  .nav-cta {
+    border: 1px solid var(--lime);
+    color: var(--lime) !important;
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 12px !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .nav-cta:hover {
+    background: var(--lime);
+    color: var(--bg) !important;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: end;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: contrast(1.05) saturate(0.9);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(14,14,14,0.55) 0%, rgba(14,14,14,0.30) 35%, rgba(14,14,14,0.94) 100%),
+      linear-gradient(90deg, rgba(14,14,14,0.65) 0%, rgba(14,14,14,0) 55%);
+  }
+  .hero > *:not(.hero-video):not(.hero-overlay) { position: relative; z-index: 2; }
+
+  .hero-meta-top {
+    position: absolute;
+    top: 110px; left: 40px; right: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-dim);
+    z-index: 2;
+  }
+  .hero-meta-top span::before {
+    content: '◆ ';
+    color: var(--lime);
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(56px, 11vw, 180px);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    margin-bottom: 40px;
+  }
+  .hero-title .accent {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--lime);
+  }
+  .hero-title .outline {
+    -webkit-text-stroke: 1.5px var(--ink);
+    color: transparent;
+  }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-desc {
+    max-width: 480px;
+    font-size: 17px;
+    color: var(--ink-dim);
+    line-height: 1.55;
+  }
+  .hero-desc strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+  }
+
+  .btn-primary {
+    background: var(--lime);
+    color: var(--bg);
+    padding: 18px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+    z-index: -1;
+  }
+  .btn-primary:hover { color: var(--lime); }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary .arrow {
+    transition: transform 0.3s;
+  }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-ghost {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4px;
+    transition: all 0.25s;
+  }
+  .btn-ghost:hover {
+    color: var(--lime);
+    border-color: var(--lime);
+  }
+
+  /* ============ WORKS ============ */
+  .works-wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .work-video-frame {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg-elev);
+    aspect-ratio: 9 / 16;
+    max-width: 480px;
+    justify-self: center;
+    border: 1px solid var(--line);
+  }
+  .work-video-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .work-video-frame::before {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 32px; height: 32px;
+    border-top: 2px solid var(--lime);
+    border-right: 2px solid var(--lime);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .work-video-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: -1px;
+    width: 32px; height: 32px;
+    border-bottom: 2px solid var(--lime);
+    border-left: 2px solid var(--lime);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .work-info h3 {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    line-height: 1.05;
+  }
+  .work-info h3 em { color: var(--lime); font-style: italic; font-weight: 400; }
+  .work-info p {
+    color: var(--ink-dim);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .work-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .work-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lime);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+  .work-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .work-meta-item .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .work-meta-item .v {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  /* ============ SECTION shared ============ */
+  section {
+    padding: 120px 40px;
+    border-top: 1px solid var(--line);
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--lime);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--lime);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 1100px;
+    margin-bottom: 80px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--lime);
+    font-weight: 400;
+  }
+
+  /* ============ SERVICES ============ */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .service {
+    background: var(--bg);
+    padding: 48px 40px;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .service:hover { background: var(--bg-elev); }
+  .service-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--lime);
+    letter-spacing: 0.2em;
+    margin-bottom: 32px;
+  }
+  .service-title {
+    font-family: var(--display);
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .service-desc {
+    color: var(--ink-dim);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service-features li {
+    font-size: 13px;
+    color: var(--ink);
+    padding-left: 20px;
+    position: relative;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .service-features li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--lime);
+    font-weight: 700;
+  }
+
+  /* ============ SPECS ============ */
+  .specs-wrap { display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start; }
+  .specs-table {
+    border-top: 1px solid var(--line);
+  }
+  .spec-row {
+    display: grid;
+    grid-template-columns: 240px 1fr auto;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    transition: padding 0.3s;
+  }
+  .spec-row:hover { padding-left: 16px; }
+  .spec-key {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .spec-val {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .spec-val em {
+    font-style: italic;
+    color: var(--lime);
+    font-weight: 400;
+  }
+  .spec-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--lime);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid var(--lime);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  /* ============ PROCESS ============ */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .step {
+    padding: 48px 32px 56px;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step-num {
+    font-family: var(--display);
+    font-size: 92px;
+    font-weight: 500;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--lime);
+    margin-bottom: 32px;
+    letter-spacing: -0.04em;
+  }
+  .step-title {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .step-desc {
+    color: var(--ink-dim);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* ============ CONTACT FORM ============ */
+  .contact-section {
+    background: var(--bg-elev);
+    overflow: hidden;
+  }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .contact-info h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(40px, 5.5vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+  .contact-info h2 em {
+    font-style: italic;
+    color: var(--lime);
+    font-weight: 400;
+  }
+  .contact-channels {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .channel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    transition: padding 0.25s;
+  }
+  .channel:hover { padding-left: 12px; color: var(--lime); }
+  .channel-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    min-width: 90px;
+  }
+  .channel-val {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  form {
+    background: var(--bg);
+    padding: 48px;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  form::before {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 40px; height: 40px;
+    border-top: 2px solid var(--lime);
+    border-right: 2px solid var(--lime);
+  }
+  form::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: -1px;
+    width: 40px; height: 40px;
+    border-bottom: 2px solid var(--lime);
+    border-left: 2px solid var(--lime);
+  }
+
+  .field { margin-bottom: 28px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  label .req { color: var(--lime); margin-left: 4px; }
+
+  input, textarea, select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    transition: border-color 0.25s;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-bottom-color: var(--lime);
+  }
+  textarea { resize: vertical; min-height: 80px; font-family: var(--body); }
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23c5d92d' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    padding-right: 24px;
+    cursor: pointer;
+  }
+  select option { background: var(--bg-elev); color: var(--ink); }
+
+  .submit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+  .submit-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-dim);
+    letter-spacing: 0.1em;
+    max-width: 200px;
+    line-height: 1.5;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 60px 40px 40px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .footer-brand {
+    font-family: var(--display);
+    font-size: 56px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    line-height: 1;
+  }
+  .footer-mid {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.7;
+  }
+  .footer-end {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.15em;
+  }
+
+  /* ============ Reveal animation ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.2, 0.6, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 920px) {
+    nav { padding: 18px 20px; }
+    .nav-links { gap: 18px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+
+    .hero { padding: 130px 20px 60px; min-height: auto; }
+    .hero-meta-top { left: 20px; right: 20px; top: 100px; font-size: 9px; }
+    .hero-title { font-size: clamp(48px, 14vw, 96px); margin-bottom: 24px; }
+    .hero-bottom { grid-template-columns: 1fr; gap: 32px; }
+    .hero-actions { align-items: flex-start; }
+
+    section { padding: 80px 20px; }
+    .section-title { margin-bottom: 48px; }
+
+    .services-grid { grid-template-columns: 1fr; }
+    .service { padding: 36px 24px; }
+
+    .works-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .work-video-frame { max-width: 320px; }
+    .work-meta { grid-template-columns: 1fr; gap: 16px; }
+
+    .specs-wrap { grid-template-columns: 1fr; gap: 24px; }
+    .spec-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .step { padding: 32px 20px 36px; }
+    .step:nth-child(2) { border-right: none; }
+    .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--line); }
+
+    .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+    form { padding: 32px 24px; }
+    .field-row { grid-template-columns: 1fr; gap: 0; }
+    .field-row .field:first-child { margin-bottom: 28px; }
+
+    footer { grid-template-columns: 1fr; gap: 24px; text-align: left; }
+    .footer-mid, .footer-end { text-align: left; }
+    .footer-brand { font-size: 40px; }
+
+    .submit-row { flex-direction: column-reverse; gap: 20px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo" aria-label="NOOK home">
+    <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M6 8 L6 24 L16 18 L26 24 L26 8 L16 14 Z" />
+    </svg>
+    <span class="logo-text">NOOK</span>
+    <span class="logo-tag">LED · CORNER</span>
+  </a>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#specs">Specs</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#contacto" class="nav-cta">Cotizar</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="hero_poster.jpg">
+      <source src="hero_corner.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-meta-top">
+      <span>RENTAL · CORNER LED</span>
+      <span>BUENOS AIRES — AR</span>
+      <span>2026 / 01</span>
+    </div>
+
+    <div>
+      <h1 class="hero-title">
+        Doblamos<br>
+        la <span class="accent">luz</span> <span class="outline">en</span><br>
+        la esquina.
+      </h1>
+
+      <div class="hero-bottom">
+        <p class="hero-desc reveal">
+          Somos los <strong>únicos</strong> especialistas en <strong>Corner LED</strong> en Argentina.
+          Pantallas de alta densidad que se pliegan en 90° y contenido <strong>anamórfico 3D</strong>
+          producido in-house para que tu marca aparezca donde nadie más puede ponerla.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#contacto" class="btn-primary">
+            Pedir cotización
+            <span class="arrow">→</span>
+          </a>
+          <a href="#trabajos" class="btn-ghost">VER TRABAJOS ↓</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="servicios">
+    <div class="section-label reveal">Servicios / 02</div>
+    <h2 class="section-title reveal">
+      Dos productos. <em>Una</em> sola obsesión:<br>
+      que la pantalla deje de parecer una pantalla.
+    </h2>
+
+    <div class="services-grid">
+      <div class="service reveal">
+        <div class="service-num">/ 01 — RENTAL</div>
+        <h3 class="service-title">Corner LED</h3>
+        <p class="service-desc">
+          Pantallas LED de alta densidad montadas en ángulo recto. La esquina deja de ser
+          un límite y se convierte en el punto de fuga del show. Armado y operación a cargo
+          nuestro de punta a punta.
+        </p>
+        <ul class="service-features">
+          <li>Pixel pitch desde P2.6</li>
+          <li>Estructura modular 90°</li>
+          <li>Setup &amp; operación in-situ</li>
+          <li>Backup técnico durante el evento</li>
+        </ul>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-num">/ 02 — CONTENIDO</div>
+        <h3 class="service-title">Anamórfico 3D</h3>
+        <p class="service-desc">
+          Producción de contenido 3D con corrección anamórfica para corner LED.
+          Diseñamos cada pieza desde el ángulo de visión exacto del público:
+          el resultado es ese efecto en el que el objeto rompe la pantalla.
+        </p>
+        <ul class="service-features">
+          <li>Conceptualización + dirección</li>
+          <li>3D / animación / render</li>
+          <li>Calibración por punto de vista</li>
+          <li>Entrega lista para play-out</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKS ============ -->
+  <section id="trabajos">
+    <div class="section-label reveal">Trabajos / 03</div>
+    <h2 class="section-title reveal">
+      Casos reales. <em>Contenido</em> propio.<br>
+      Pantalla que se rompe.
+    </h2>
+
+    <div class="works-wrap">
+      <div class="work-video-frame reveal">
+        <video autoplay muted loop playsinline poster="totem_poster.jpg">
+          <source src="totem.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="work-info reveal">
+        <h3>Totem anamórfico — <em>Heineken</em></h3>
+        <p>
+          Pieza vertical con contenido 3D anamórfico calibrado al ángulo de visión del público.
+          La lata sale del display rompiendo el plano de la pantalla. Producción integral:
+          conceptualización, modelado 3D, render y play-out en pantalla LED de alta densidad.
+        </p>
+        <div class="work-tags">
+          <span class="work-tag">Anamórfico 3D</span>
+          <span class="work-tag">Totem vertical</span>
+          <span class="work-tag">Producto</span>
+        </div>
+        <div class="work-meta">
+          <div class="work-meta-item">
+            <span class="k">Servicio</span>
+            <span class="v">Rental + contenido</span>
+          </div>
+          <div class="work-meta-item">
+            <span class="k">Formato</span>
+            <span class="v">9:16 vertical</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPECS ============ -->
+  <section id="specs">
+    <div class="section-label reveal">Specs técnicos / 04</div>
+    <h2 class="section-title reveal">
+      La <em>letra chica</em> que hace la diferencia<br>
+      entre verse bien y verse increíble.
+    </h2>
+
+    <div class="specs-wrap">
+      <div class="reveal">
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.6;">
+          Trabajamos con paneles de alta densidad y refresh rate broadcast-ready.
+          Para proyectos con requerimientos específicos, configuramos a medida.
+        </p>
+      </div>
+      <div class="specs-table">
+        <div class="spec-row reveal">
+          <div class="spec-key">Pixel pitch</div>
+          <div class="spec-val">P2.6 <em>/</em> P2.9 <em>/</em> P3.9</div>
+          <div class="spec-tag">Indoor &amp; Outdoor</div>
+        </div>
+        <div class="spec-row reveal">
+          <div class="spec-key">Refresh rate</div>
+          <div class="spec-val">3.840 <em>Hz</em></div>
+          <div class="spec-tag">Broadcast</div>
+        </div>
+        <div class="spec-row reveal">
+          <div class="spec-key">Brillo</div>
+          <div class="spec-val">800 — 5.000 <em>nits</em></div>
+          <div class="spec-tag">Configurable</div>
+        </div>
+        <div class="spec-row reveal">
+          <div class="spec-key">Ángulo de visión</div>
+          <div class="spec-val">160° <em>H</em> · 160° <em>V</em></div>
+          <div class="spec-tag">Wide</div>
+        </div>
+        <div class="spec-row reveal">
+          <div class="spec-key">Configuración</div>
+          <div class="spec-val">Corner 90° <em>nativo</em></div>
+          <div class="spec-tag">Único en AR</div>
+        </div>
+        <div class="spec-row reveal">
+          <div class="spec-key">Procesamiento</div>
+          <div class="spec-val">Novastar / <em>Brompton</em> ready</div>
+          <div class="spec-tag">4K input</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="proceso">
+    <div class="section-label reveal">Proceso / 05</div>
+    <h2 class="section-title reveal">
+      Cuatro pasos. <em>Cero</em> sorpresas<br>
+      el día del evento.
+    </h2>
+
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Brief &amp; cotización</h3>
+        <p class="step-desc">
+          Nos contás el evento, el espacio y la idea. Te devolvemos una propuesta
+          técnica + creativa con presupuesto cerrado en 48hs.
+        </p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Diseño anamórfico</h3>
+        <p class="step-desc">
+          Nuestro equipo conceptualiza y produce el contenido 3D calibrado al
+          punto de vista exacto del público y la geometría del corner.
+        </p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Armado &amp; calibración</h3>
+        <p class="step-desc">
+          Llegamos con tiempo, montamos la estructura, conectamos el procesamiento
+          y dejamos todo testeado antes del horario de público.
+        </p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Operación en vivo</h3>
+        <p class="step-desc">
+          Durante el evento queda un técnico nuestro al control. Vos te concentrás
+          en el show, nosotros nos hacemos cargo de la pantalla.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contacto" class="contact-section">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="section-label reveal">Cotizá tu proyecto / 06</div>
+        <h2 class="reveal">
+          Contanos<br>
+          qué <em>imaginaste</em>.<br>
+          Lo hacemos posible.
+        </h2>
+        <p style="color: var(--ink-dim); margin-top: 24px; max-width: 420px;" class="reveal">
+          Respondemos cotizaciones en 48hs hábiles. Para urgencias, escribinos
+          directo por WhatsApp.
+        </p>
+
+        <div class="contact-channels">
+          <a href="https://wa.me/541135754523" class="channel reveal" target="_blank" rel="noopener">
+            <span class="channel-label">WhatsApp</span>
+            <span class="channel-val">+54 11 3575 4523</span>
+          </a>
+          <a href="https://wa.me/541168054270" class="channel reveal" target="_blank" rel="noopener">
+            <span class="channel-label">WhatsApp 2</span>
+            <span class="channel-val">+54 11 6805 4270</span>
+          </a>
+          <a href="https://instagram.com/nook.led" class="channel reveal" target="_blank" rel="noopener">
+            <span class="channel-label">Instagram</span>
+            <span class="channel-val">@nook.led</span>
+          </a>
+          <a href="mailto:info@nookled.com" class="channel reveal">
+            <span class="channel-label">Email</span>
+            <span class="channel-val">info@nookled.com</span>
+          </a>
+        </div>
+      </div>
+
+      <form class="reveal" onsubmit="handleSubmit(event)">
+        <div class="field">
+          <label for="name">Nombre <span class="req">*</span></label>
+          <input id="name" name="name" type="text" required />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Teléfono</label>
+            <input id="phone" name="phone" type="tel" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="company">Empresa / Productora</label>
+            <input id="company" name="company" type="text" />
+          </div>
+          <div class="field">
+            <label for="type">Tipo de evento <span class="req">*</span></label>
+            <select id="type" name="type" required>
+              <option value="">Seleccionar…</option>
+              <option>Evento corporativo</option>
+              <option>Lanzamiento de producto</option>
+              <option>Recital / festival</option>
+              <option>Filmación / publicidad</option>
+              <option>BTL / activación</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="date">Fecha estimada</label>
+            <input id="date" name="date" type="date" />
+          </div>
+          <div class="field">
+            <label for="service">Servicio</label>
+            <select id="service" name="service">
+              <option value="">Seleccionar…</option>
+              <option>Solo Corner LED (rental)</option>
+              <option>Solo contenido anamórfico 3D</option>
+              <option>Corner LED + contenido 3D</option>
+              <option>No estoy seguro / quiero asesoría</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="brief">Contanos un poco del proyecto</label>
+          <textarea id="brief" name="brief" placeholder="Espacio, dimensiones, estilo, referencias…"></textarea>
+        </div>
+
+        <div class="submit-row">
+          <p class="submit-note">Respondemos en 48hs hábiles con propuesta y presupuesto.</p>
+          <button type="submit" class="btn-primary">
+            Enviar
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand reveal">NÖK</div>
+  <div class="footer-mid reveal">
+    LED · CORNER<br>
+    BUENOS AIRES — ARGENTINA<br>
+    © 2026
+  </div>
+  <div class="footer-end reveal">
+    NOOK.LED.COM<br>
+    BY DOOPLERSTUDIO
+  </div>
+</footer>
+
+<script>
+  // nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = 'Enviado ✓';
+    btn.style.background = 'var(--ink)';
+    btn.style.color = 'var(--lime)';
+    setTimeout(() => {
+      e.target.reset();
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2200);
+  }
+</script>
+
+</body>
+</html>
