@@ -7,7 +7,7 @@
 <meta name="description" content="Rental de Corner LED y contenido anamórfico 3D para eventos, productoras y agencias. Únicos en LED corner en Argentina." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0e0e0e;
@@ -18,9 +18,9 @@
     --lime: #c5d92d;
     --lime-dim: #9ab022;
     --grid-glow: rgba(197, 217, 45, 0.06);
-    --display: 'Bricolage Grotesque', serif;
-    --body: 'Inter Tight', system-ui, sans-serif;
-    --mono: 'JetBrains Mono', monospace;
+    --display: 'Montserrat', sans-serif;
+    --body: 'Montserrat', sans-serif;
+    --mono: 'Montserrat', sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -81,27 +81,13 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
     text-decoration: none;
-    color: var(--ink);
+    color: var(--lime);
   }
-  .logo-mark {
-    width: 28px; height: 28px;
-    flex-shrink: 0;
-  }
-  .logo-mark path { stroke: var(--lime); stroke-width: 2; fill: none; }
-  .logo-text {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 18px;
-    letter-spacing: 0.32em;
-  }
-  .logo-tag {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.4em;
-    color: var(--ink-dim);
-    margin-left: 6px;
+  .logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
   }
 
   .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -160,38 +146,18 @@
   }
   .hero > *:not(.hero-video):not(.hero-overlay) { position: relative; z-index: 2; }
 
-  .hero-meta-top {
-    position: absolute;
-    top: 110px; left: 40px; right: 40px;
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--ink-dim);
-    z-index: 2;
-  }
-  .hero-meta-top span::before {
-    content: '◆ ';
-    color: var(--lime);
-  }
-
   .hero-title {
     font-family: var(--display);
-    font-weight: 500;
+    font-weight: 700;
     font-size: clamp(56px, 11vw, 180px);
-    line-height: 0.86;
+    line-height: 0.92;
     letter-spacing: -0.04em;
     margin-bottom: 40px;
   }
   .hero-title .accent {
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
     color: var(--lime);
-  }
-  .hero-title .outline {
-    -webkit-text-stroke: 1.5px var(--ink);
-    color: transparent;
   }
 
   .hero-bottom {
@@ -316,12 +282,12 @@
   .work-info h3 {
     font-family: var(--display);
     font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
-    line-height: 1.05;
+    line-height: 1.1;
   }
-  .work-info h3 em { color: var(--lime); font-style: italic; font-weight: 400; }
+  .work-info h3 em { color: var(--lime); font-style: italic; font-weight: 600; }
   .work-info p {
     color: var(--ink-dim);
     font-size: 16px;
@@ -363,7 +329,7 @@
   .work-meta-item .v {
     font-family: var(--display);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   /* ============ SECTION shared ============ */
@@ -390,9 +356,9 @@
   }
   .section-title {
     font-family: var(--display);
-    font-weight: 500;
+    font-weight: 700;
     font-size: clamp(40px, 6vw, 88px);
-    line-height: 0.95;
+    line-height: 0.98;
     letter-spacing: -0.03em;
     max-width: 1100px;
     margin-bottom: 80px;
@@ -400,7 +366,7 @@
   .section-title em {
     font-style: italic;
     color: var(--lime);
-    font-weight: 400;
+    font-weight: 600;
   }
 
   /* ============ SERVICES ============ */
@@ -428,7 +394,7 @@
   .service-title {
     font-family: var(--display);
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 20px;
     letter-spacing: -0.02em;
   }
@@ -485,13 +451,13 @@
   .spec-val {
     font-family: var(--display);
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.01em;
   }
   .spec-val em {
     font-style: italic;
     color: var(--lime);
-    font-weight: 400;
+    font-weight: 500;
   }
   .spec-tag {
     font-family: var(--mono);
@@ -521,7 +487,7 @@
   .step-num {
     font-family: var(--display);
     font-size: 92px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1;
     color: transparent;
     -webkit-text-stroke: 1px var(--lime);
@@ -531,7 +497,7 @@
   .step-title {
     font-family: var(--display);
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 14px;
     letter-spacing: -0.01em;
   }
@@ -541,137 +507,87 @@
     line-height: 1.55;
   }
 
-  /* ============ CONTACT FORM ============ */
+  /* ============ CONTACT ============ */
   .contact-section {
     background: var(--bg-elev);
     overflow: hidden;
+    text-align: center;
   }
-  .contact-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    max-width: 1400px;
+  .contact-wrap-simple {
+    max-width: 1100px;
     margin: 0 auto;
   }
-  .contact-info h2 {
+  .contact-title {
     font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(40px, 5.5vw, 80px);
-    line-height: 0.95;
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 0.98;
     letter-spacing: -0.03em;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
-  .contact-info h2 em {
+  .contact-title em {
     font-style: italic;
     color: var(--lime);
-    font-weight: 400;
+    font-weight: 600;
   }
-  .contact-channels {
-    margin-top: 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .contact-lead {
+    color: var(--ink-dim);
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0 auto 48px;
   }
-  .channel {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--line);
+  .contact-cta {
+    margin-bottom: 80px;
+  }
+  .contact-channels-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .channel-card {
+    background: var(--bg);
+    padding: 36px 24px;
     text-decoration: none;
     color: var(--ink);
-    transition: padding 0.25s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.25s, transform 0.25s;
+    position: relative;
   }
-  .channel:hover { padding-left: 12px; color: var(--lime); }
+  .channel-card:hover {
+    background: var(--bg-elev);
+    color: var(--lime);
+  }
+  .channel-card:hover .channel-icon { color: var(--lime); transform: translateY(-2px); }
+  .channel-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--lime);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    transition: transform 0.25s, color 0.25s;
+  }
+  .channel-icon svg { width: 100%; height: 100%; }
   .channel-label {
-    font-family: var(--mono);
+    font-family: var(--display);
+    font-weight: 500;
     font-size: 11px;
     color: var(--ink-dim);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    min-width: 90px;
   }
   .channel-val {
     font-family: var(--display);
-    font-size: 18px;
-    font-weight: 500;
-  }
-
-  form {
-    background: var(--bg);
-    padding: 48px;
-    border: 1px solid var(--line);
-    position: relative;
-  }
-  form::before {
-    content: '';
-    position: absolute;
-    top: -1px; right: -1px;
-    width: 40px; height: 40px;
-    border-top: 2px solid var(--lime);
-    border-right: 2px solid var(--lime);
-  }
-  form::after {
-    content: '';
-    position: absolute;
-    bottom: -1px; left: -1px;
-    width: 40px; height: 40px;
-    border-bottom: 2px solid var(--lime);
-    border-left: 2px solid var(--lime);
-  }
-
-  .field { margin-bottom: 28px; }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  label {
-    display: block;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: var(--ink-dim);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  label .req { color: var(--lime); margin-left: 4px; }
-
-  input, textarea, select {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--line);
-    color: var(--ink);
-    font-family: var(--body);
     font-size: 16px;
-    padding: 10px 0;
-    outline: none;
-    transition: border-color 0.25s;
-  }
-  input:focus, textarea:focus, select:focus {
-    border-bottom-color: var(--lime);
-  }
-  textarea { resize: vertical; min-height: 80px; font-family: var(--body); }
-  select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23c5d92d' stroke-width='1.5' fill='none'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 4px center;
-    padding-right: 24px;
-    cursor: pointer;
-  }
-  select option { background: var(--bg-elev); color: var(--ink); }
-
-  .submit-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 16px;
-  }
-  .submit-note {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--ink-dim);
-    letter-spacing: 0.1em;
-    max-width: 200px;
-    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
   /* ============ FOOTER ============ */
@@ -684,11 +600,12 @@
     align-items: end;
   }
   .footer-brand {
-    font-family: var(--display);
-    font-size: 56px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    line-height: 1;
+    color: var(--lime);
+  }
+  .footer-brand img {
+    height: 64px;
+    width: auto;
+    display: block;
   }
   .footer-mid {
     font-family: var(--mono);
@@ -721,7 +638,6 @@
     .nav-links a:not(.nav-cta) { display: none; }
 
     .hero { padding: 130px 20px 60px; min-height: auto; }
-    .hero-meta-top { left: 20px; right: 20px; top: 100px; font-size: 9px; }
     .hero-title { font-size: clamp(48px, 14vw, 96px); margin-bottom: 24px; }
     .hero-bottom { grid-template-columns: 1fr; gap: 32px; }
     .hero-actions { align-items: flex-start; }
@@ -744,16 +660,13 @@
     .step:nth-child(2) { border-right: none; }
     .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--line); }
 
-    .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
-    form { padding: 32px 24px; }
-    .field-row { grid-template-columns: 1fr; gap: 0; }
-    .field-row .field:first-child { margin-bottom: 28px; }
+    .contact-channels-grid { grid-template-columns: 1fr 1fr; }
+    .channel-card { padding: 28px 16px; }
+    .contact-cta { margin-bottom: 56px; }
 
     footer { grid-template-columns: 1fr; gap: 24px; text-align: left; }
     .footer-mid, .footer-end { text-align: left; }
-    .footer-brand { font-size: 40px; }
-
-    .submit-row { flex-direction: column-reverse; gap: 20px; align-items: flex-start; }
+    .footer-brand img { height: 48px; }
   }
 </style>
 </head>
@@ -761,11 +674,7 @@
 
 <nav id="nav">
   <a href="#" class="logo" aria-label="NOOK home">
-    <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M6 8 L6 24 L16 18 L26 24 L26 8 L16 14 Z" />
-    </svg>
-    <span class="logo-text">NOOK</span>
-    <span class="logo-tag">LED · CORNER</span>
+    <img src="nook-logo.svg" alt="NOOK · LED CORNER" class="logo-img" />
   </a>
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
@@ -784,17 +693,11 @@
     </video>
     <div class="hero-overlay"></div>
 
-    <div class="hero-meta-top">
-      <span>RENTAL · CORNER LED</span>
-      <span>BUENOS AIRES — AR</span>
-      <span>2026 / 01</span>
-    </div>
-
     <div>
       <h1 class="hero-title">
-        Doblamos<br>
-        la <span class="accent">luz</span> <span class="outline">en</span><br>
-        la esquina.
+        Contenido<br>
+        que <span class="accent">sale</span><br>
+        de la pantalla.
       </h1>
 
       <div class="hero-bottom">
@@ -873,10 +776,10 @@
       </div>
 
       <div class="work-info reveal">
-        <h3>Totem anamórfico — <em>Heineken</em></h3>
+        <h3>Totem anamórfico<br><em>Hacé lucir tu marca.</em></h3>
         <p>
           Pieza vertical con contenido 3D anamórfico calibrado al ángulo de visión del público.
-          La lata sale del display rompiendo el plano de la pantalla. Producción integral:
+          El producto sale del display rompiendo el plano de la pantalla. Producción integral:
           conceptualización, modelado 3D, render y play-out en pantalla LED de alta densidad.
         </p>
         <div class="work-tags">
@@ -994,111 +897,76 @@
 
   <!-- ============ CONTACT ============ -->
   <section id="contacto" class="contact-section">
-    <div class="contact-wrap">
-      <div class="contact-info">
-        <div class="section-label reveal">Cotizá tu proyecto / 06</div>
-        <h2 class="reveal">
-          Contanos<br>
-          qué <em>imaginaste</em>.<br>
-          Lo hacemos posible.
-        </h2>
-        <p style="color: var(--ink-dim); margin-top: 24px; max-width: 420px;" class="reveal">
-          Respondemos cotizaciones en 48hs hábiles. Para urgencias, escribinos
-          directo por WhatsApp.
-        </p>
+    <div class="contact-wrap-simple">
+      <div class="section-label reveal" style="justify-content:center; margin: 0 auto 32px; display:inline-flex;">Cotizá tu proyecto / 06</div>
+      <h2 class="contact-title reveal">
+        Contanos qué <em>imaginaste</em>.<br>
+        Lo hacemos posible.
+      </h2>
+      <p class="contact-lead reveal">
+        Escribinos por WhatsApp para una respuesta rápida o mandanos los detalles
+        de tu proyecto por mail. Respondemos cotizaciones en 48hs hábiles.
+      </p>
 
-        <div class="contact-channels">
-          <a href="https://wa.me/541135754523" class="channel reveal" target="_blank" rel="noopener">
-            <span class="channel-label">WhatsApp</span>
-            <span class="channel-val">+54 11 3575 4523</span>
-          </a>
-          <a href="https://wa.me/541168054270" class="channel reveal" target="_blank" rel="noopener">
-            <span class="channel-label">WhatsApp 2</span>
-            <span class="channel-val">+54 11 6805 4270</span>
-          </a>
-          <a href="https://instagram.com/nook.led" class="channel reveal" target="_blank" rel="noopener">
-            <span class="channel-label">Instagram</span>
-            <span class="channel-val">@nook.led</span>
-          </a>
-          <a href="mailto:info@nookled.com" class="channel reveal">
-            <span class="channel-label">Email</span>
-            <span class="channel-val">info@nookled.com</span>
-          </a>
-        </div>
+      <a href="https://wa.me/541135754523" class="btn-primary contact-cta reveal" target="_blank" rel="noopener">
+        Escribinos por WhatsApp
+        <span class="arrow">→</span>
+      </a>
+
+      <div class="contact-channels-grid">
+        <a href="https://wa.me/541135754523" class="channel-card reveal" target="_blank" rel="noopener">
+          <span class="channel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="channel-label">WhatsApp</span>
+          <span class="channel-val">+54 11 3575 4523</span>
+        </a>
+
+        <a href="https://wa.me/541168054270" class="channel-card reveal" target="_blank" rel="noopener">
+          <span class="channel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="channel-label">WhatsApp</span>
+          <span class="channel-val">+54 11 6805 4270</span>
+        </a>
+
+        <a href="https://instagram.com/nook.led" class="channel-card reveal" target="_blank" rel="noopener">
+          <span class="channel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="channel-label">Instagram</span>
+          <span class="channel-val">@nook.led</span>
+        </a>
+
+        <a href="mailto:info@nookled.com" class="channel-card reveal">
+          <span class="channel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="channel-label">Email</span>
+          <span class="channel-val">info@nookled.com</span>
+        </a>
       </div>
-
-      <form class="reveal" onsubmit="handleSubmit(event)">
-        <div class="field">
-          <label for="name">Nombre <span class="req">*</span></label>
-          <input id="name" name="name" type="text" required />
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="email">Email <span class="req">*</span></label>
-            <input id="email" name="email" type="email" required />
-          </div>
-          <div class="field">
-            <label for="phone">Teléfono</label>
-            <input id="phone" name="phone" type="tel" />
-          </div>
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="company">Empresa / Productora</label>
-            <input id="company" name="company" type="text" />
-          </div>
-          <div class="field">
-            <label for="type">Tipo de evento <span class="req">*</span></label>
-            <select id="type" name="type" required>
-              <option value="">Seleccionar…</option>
-              <option>Evento corporativo</option>
-              <option>Lanzamiento de producto</option>
-              <option>Recital / festival</option>
-              <option>Filmación / publicidad</option>
-              <option>BTL / activación</option>
-              <option>Otro</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="date">Fecha estimada</label>
-            <input id="date" name="date" type="date" />
-          </div>
-          <div class="field">
-            <label for="service">Servicio</label>
-            <select id="service" name="service">
-              <option value="">Seleccionar…</option>
-              <option>Solo Corner LED (rental)</option>
-              <option>Solo contenido anamórfico 3D</option>
-              <option>Corner LED + contenido 3D</option>
-              <option>No estoy seguro / quiero asesoría</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="brief">Contanos un poco del proyecto</label>
-          <textarea id="brief" name="brief" placeholder="Espacio, dimensiones, estilo, referencias…"></textarea>
-        </div>
-
-        <div class="submit-row">
-          <p class="submit-note">Respondemos en 48hs hábiles con propuesta y presupuesto.</p>
-          <button type="submit" class="btn-primary">
-            Enviar
-            <span class="arrow">→</span>
-          </button>
-        </div>
-      </form>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="footer-brand reveal">NÖK</div>
+  <div class="footer-brand reveal">
+    <img src="nook-logo.svg" alt="NOOK · LED CORNER" />
+  </div>
   <div class="footer-mid reveal">
     LED · CORNER<br>
     BUENOS AIRES — ARGENTINA<br>
@@ -1128,21 +996,6 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // form
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    const originalHTML = btn.innerHTML;
-    btn.innerHTML = 'Enviado ✓';
-    btn.style.background = 'var(--ink)';
-    btn.style.color = 'var(--lime)';
-    setTimeout(() => {
-      e.target.reset();
-      btn.innerHTML = originalHTML;
-      btn.style.background = '';
-      btn.style.color = '';
-    }, 2200);
-  }
 </script>
 
 </body>
