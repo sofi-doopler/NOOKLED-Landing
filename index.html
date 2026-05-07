@@ -505,6 +505,31 @@
   }
 
   /* ============ CORPOREO ============ */
+  .corp-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .corp-header-text .section-title {
+    margin-bottom: 24px;
+  }
+  .corp-header-text .section-lead {
+    margin: 0;
+    max-width: none;
+  }
+  .corp-header-image {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-elev);
+  }
+  .corp-header-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   .section-lead {
     color: var(--ink-dim);
     font-size: 17px;
@@ -760,6 +785,8 @@
     .step-num { font-size: 48px; margin-bottom: 16px; }
 
     .section-lead { margin: -32px 0 56px; font-size: 15px; }
+    .corp-header { grid-template-columns: 1fr; gap: 32px; margin-bottom: 56px; }
+    .corp-header-text .section-lead { margin: 0; }
     .corp-flow {
       grid-template-columns: 1fr;
       gap: 14px;
@@ -1041,15 +1068,22 @@
   <!-- ============ CORPOREO ============ -->
   <section id="corporeo">
     <div class="section-label reveal">Corpóreo</div>
-    <h2 class="section-title reveal">
-      <em>Acompañá</em> tu pantalla<br>
-      con un objeto físico.
-    </h2>
-    <p class="section-lead reveal">
-      Hacé resaltar tu marca con un objeto corpóreo personalizado para tu branding.
-      Hacemos diseño e impresiones en 3D de todo tipo de tamaños y texturas.
-      Contanos tu idea y te asesoramos sobre los materiales más adecuados para tu proyecto.
-    </p>
+    <div class="corp-header">
+      <div class="corp-header-text">
+        <h2 class="section-title reveal">
+          <em>Acompañá</em> tu pantalla<br>
+          con un objeto físico.
+        </h2>
+        <p class="section-lead reveal">
+          Hacé resaltar tu marca con un objeto corpóreo personalizado para tu branding.
+          Hacemos diseño e impresiones en 3D de todo tipo de tamaños y texturas.
+          Contanos tu idea y te asesoramos sobre los materiales más adecuados para tu proyecto.
+        </p>
+      </div>
+      <div class="corp-header-image reveal">
+        <img src="corp-escala.jpg" alt="Boceto de escala: silueta humana junto al personaje corpóreo de 80cm" />
+      </div>
+    </div>
 
     <div class="corp-flow">
       <div class="corp-step reveal">
