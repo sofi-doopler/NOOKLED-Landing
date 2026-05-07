@@ -216,6 +216,9 @@
     gap: 80px;
     align-items: center;
   }
+  .works-wrap + .works-wrap {
+    margin-top: 120px;
+  }
   .work-video-frame {
     position: relative;
     border-radius: 14px;
@@ -225,6 +228,11 @@
     max-width: 480px;
     justify-self: center;
     border: 1px solid var(--line);
+  }
+  .work-video-frame.is-horizontal {
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    width: 100%;
   }
   .work-video-frame video {
     width: 100%;
@@ -638,7 +646,9 @@
     .service { padding: 36px 24px; }
 
     .works-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .works-wrap + .works-wrap { margin-top: 80px; }
     .work-video-frame { max-width: 320px; order: -1; }
+    .work-video-frame.is-horizontal { max-width: 100%; }
     .work-number { margin-bottom: 16px; }
     .work-meta { grid-template-columns: 1fr; gap: 16px; }
 
@@ -785,6 +795,39 @@
       <div class="work-video-frame reveal">
         <video autoplay muted loop playsinline poster="totem_poster.jpg">
           <source src="totem.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="works-wrap">
+      <div class="work-info reveal">
+        <div class="work-number">02.</div>
+        <h3>Pantalla esquinada</h3>
+        <p>
+          Corner LED de alta densidad montado en ángulo recto. Dos planos
+          que se pliegan en 90° y convierten la esquina del espacio en el
+          punto focal del show. Setup, calibración y operación a cargo nuestro.
+        </p>
+        <div class="work-tags">
+          <span class="work-tag">Corner LED</span>
+          <span class="work-tag">Anamórfico 3D</span>
+          <span class="work-tag">Producto</span>
+        </div>
+        <div class="work-meta">
+          <div class="work-meta-item">
+            <span class="k">Servicio</span>
+            <span class="v">Rental + contenido</span>
+          </div>
+          <div class="work-meta-item">
+            <span class="k">Formato</span>
+            <span class="v">1 × 2 mts</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-video-frame is-horizontal reveal">
+        <video autoplay muted loop playsinline>
+          <source src="esquinada.mp4" type="video/mp4">
         </video>
       </div>
     </div>
