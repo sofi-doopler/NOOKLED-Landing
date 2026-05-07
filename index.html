@@ -486,35 +486,39 @@
   .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    gap: 20px;
   }
   .step {
-    padding: 48px 32px 56px;
-    border-right: 1px solid var(--line);
+    background: var(--lime);
+    color: var(--bg);
+    padding: 36px 28px 32px;
+    border-radius: 18px;
     position: relative;
+    transition: transform 0.3s ease;
   }
-  .step:last-child { border-right: none; }
+  .step:hover {
+    transform: translateY(-4px);
+  }
   .step-num {
     font-family: var(--display);
-    font-size: 92px;
-    font-weight: 700;
+    font-size: 64px;
+    font-weight: 800;
     line-height: 1;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--lime);
-    margin-bottom: 32px;
+    color: var(--ink);
+    margin-bottom: 24px;
     letter-spacing: -0.04em;
+    -webkit-text-stroke: 0;
   }
   .step-title {
     font-family: var(--display);
     font-size: 22px;
     font-weight: 700;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     letter-spacing: -0.01em;
+    color: var(--bg);
   }
   .step-desc {
-    color: var(--ink-dim);
+    color: rgba(14, 14, 14, 0.78);
     font-size: 14px;
     line-height: 1.55;
   }
@@ -668,10 +672,9 @@
     .specs-wrap { grid-template-columns: 1fr; gap: 24px; }
     .spec-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
 
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    .step { padding: 32px 20px 36px; }
-    .step:nth-child(2) { border-right: none; }
-    .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .step { padding: 28px 20px 24px; border-radius: 14px; }
+    .step-num { font-size: 48px; margin-bottom: 16px; }
 
     .contact-channels-grid { grid-template-columns: 1fr 1fr; }
     .channel-card { padding: 28px 16px; }
@@ -690,8 +693,7 @@
     <img src="nook-logo.svg" alt="NOOK · LED CORNER" class="logo-img" />
   </a>
   <div class="nav-links">
-    <a href="#servicios">Servicios</a>
-    <a href="#specs">Specs</a>
+    <a href="#trabajos">Ejemplos</a>
     <a href="#proceso">Proceso</a>
     <a href="#contacto" class="nav-cta">Cotizar</a>
   </div>
@@ -731,7 +733,7 @@
   </header>
 
   <!-- ============ SERVICES ============ -->
-  <section id="servicios">
+  <section id="servicios" style="display:none;">
     <div class="section-label reveal">Servicios / 02</div>
     <h2 class="section-title reveal">
       Dos productos. <em>Una</em> sola obsesión:<br>
@@ -775,7 +777,7 @@
 
   <!-- ============ WORKS ============ -->
   <section id="trabajos">
-    <div class="section-label reveal">Ejemplos / 03</div>
+    <div class="section-label reveal">Ejemplos</div>
     <h2 class="section-title reveal">
       <em>Contenido</em> propio.<br>
       Pantalla que se rompe.
@@ -816,7 +818,7 @@
   </section>
 
   <!-- ============ SPECS ============ -->
-  <section id="specs">
+  <section id="specs" style="display:none;">
     <div class="section-label reveal">Specs técnicos / 04</div>
     <h2 class="section-title reveal">
       La <em>letra chica</em> que hace la diferencia<br>
@@ -867,7 +869,7 @@
 
   <!-- ============ PROCESS ============ -->
   <section id="proceso">
-    <div class="section-label reveal">Proceso / 05</div>
+    <div class="section-label reveal">Proceso</div>
     <h2 class="section-title reveal">
       Cuatro pasos. <em>Cero</em> sorpresas<br>
       el día del evento.
@@ -912,7 +914,7 @@
   <!-- ============ CONTACT ============ -->
   <section id="contacto" class="contact-section">
     <div class="contact-wrap-simple">
-      <div class="section-label reveal" style="justify-content:center; margin: 0 auto 32px; display:inline-flex;">Cotizá tu proyecto / 06</div>
+      <div class="section-label reveal" style="justify-content:center; margin: 0 auto 32px; display:inline-flex;">Cotizá tu proyecto</div>
       <h2 class="contact-title reveal">
         Contanos qué <em>imaginaste</em>.<br>
         Lo hacemos posible.
