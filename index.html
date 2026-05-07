@@ -541,11 +541,25 @@
     background: var(--bg-elev);
     margin-bottom: 18px;
   }
-  .corp-img img {
+  .corp-img img,
+  .corp-img video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .corp-step.corp-step-video {
+    border-color: transparent;
+    background: transparent;
+    padding: 0 16px 24px;
+  }
+  .corp-step.corp-step-video:hover {
+    box-shadow: none;
+  }
+  .corp-step.corp-step-video .corp-img {
+    background: transparent;
+    margin-top: 16px;
   }
 
   .corp-num {
@@ -1072,8 +1086,12 @@
         </svg>
       </div>
 
-      <div class="corp-step reveal">
-        <div class="corp-img"><img src="corp-04-final.jpg" alt="Objeto finalizado con materiales y color" /></div>
+      <div class="corp-step corp-step-video reveal">
+        <div class="corp-img">
+          <video autoplay muted loop playsinline>
+            <source src="corp-04-final.mp4" type="video/mp4">
+          </video>
+        </div>
         <div class="corp-num">04</div>
         <h3 class="corp-title">Objeto finalizado</h3>
         <p class="corp-desc">Materializado acorde a la propuesta.</p>
