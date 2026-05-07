@@ -504,6 +504,84 @@
     line-height: 1.55;
   }
 
+  /* ============ CORPOREO ============ */
+  .section-lead {
+    color: var(--ink-dim);
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 760px;
+    margin: -40px 0 80px;
+  }
+
+  .corp-flow {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr 80px 1fr 80px 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .corp-step {
+    background: var(--bg);
+    border: 1px solid var(--lime);
+    border-radius: 14px;
+    padding: 16px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .corp-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 0 1px var(--lime), 0 12px 32px rgba(197, 217, 45, 0.08);
+  }
+
+  .corp-img {
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-elev);
+    margin-bottom: 18px;
+  }
+  .corp-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .corp-num {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--lime);
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+  .corp-title {
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .corp-desc {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+
+  .corp-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lime);
+    opacity: 0.7;
+  }
+  .corp-arrow svg {
+    width: 60px;
+    height: auto;
+  }
+
   /* ============ CONTACT ============ */
   .contact-section {
     background: var(--bg-elev);
@@ -659,6 +737,16 @@
     .step { padding: 28px 20px 24px; border-radius: 14px; }
     .step-num { font-size: 48px; margin-bottom: 16px; }
 
+    .section-lead { margin: -32px 0 56px; font-size: 15px; }
+    .corp-flow {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .corp-arrow { transform: rotate(90deg); padding: 4px 0; }
+    .corp-arrow svg { width: 40px; }
+    .corp-img { aspect-ratio: 16 / 10; }
+    .corp-step { padding: 14px 14px 20px; }
+
     .contact-channels-grid { grid-template-columns: 1fr 1fr; }
     .channel-card { padding: 28px 16px; }
     .contact-cta { margin-bottom: 56px; }
@@ -678,6 +766,7 @@
   <div class="nav-links">
     <a href="#trabajos">Ejemplos</a>
     <a href="#proceso">Proceso</a>
+    <a href="#corporeo">Corpóreo</a>
     <a href="#contacto" class="nav-cta">Cotizar</a>
   </div>
 </nav>
@@ -923,6 +1012,71 @@
           Durante el evento queda un técnico nuestro al control. Vos te concentrás
           en el show, nosotros nos hacemos cargo de la pantalla.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CORPOREO ============ -->
+  <section id="corporeo">
+    <div class="section-label reveal">Corpóreo</div>
+    <h2 class="section-title reveal">
+      <em>Acompañá</em> tu pantalla<br>
+      con un objeto físico.
+    </h2>
+    <p class="section-lead reveal">
+      Hacé resaltar tu marca con un objeto corpóreo personalizado para tu branding.
+      Hacemos diseño e impresiones en 3D de todo tipo de tamaños y texturas.
+      Contanos tu idea y te asesoramos sobre los materiales más adecuados para tu proyecto.
+    </p>
+
+    <div class="corp-flow">
+      <div class="corp-step reveal">
+        <div class="corp-img"><img src="corp-01-logo.jpg" alt="Imagen inicial — logo o referencia del cliente" /></div>
+        <div class="corp-num">01</div>
+        <h3 class="corp-title">Imagen inicial</h3>
+        <p class="corp-desc">Logo o referencia del cliente.</p>
+      </div>
+
+      <div class="corp-arrow reveal" aria-hidden="true">
+        <svg viewBox="0 0 80 24" fill="none">
+          <line x1="0" y1="12" x2="68" y2="12" stroke="currentColor" stroke-width="1.5"/>
+          <polyline points="60,5 70,12 60,19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="corp-step reveal">
+        <div class="corp-img"><img src="corp-02-modelado.jpg" alt="Modelado 3D wireframe" /></div>
+        <div class="corp-num">02</div>
+        <h3 class="corp-title">Modelado 3D</h3>
+        <p class="corp-desc">Diseño de personajes y/o logos en su versión tridimensional.</p>
+      </div>
+
+      <div class="corp-arrow reveal" aria-hidden="true">
+        <svg viewBox="0 0 80 24" fill="none">
+          <line x1="0" y1="12" x2="68" y2="12" stroke="currentColor" stroke-width="1.5"/>
+          <polyline points="60,5 70,12 60,19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="corp-step reveal">
+        <div class="corp-img"><img src="corp-03-impresion.jpg" alt="Impresión 3D del personaje" /></div>
+        <div class="corp-num">03</div>
+        <h3 class="corp-title">Impresión 3D</h3>
+        <p class="corp-desc">Generamos corpóreos de todo tamaño.</p>
+      </div>
+
+      <div class="corp-arrow reveal" aria-hidden="true">
+        <svg viewBox="0 0 80 24" fill="none">
+          <line x1="0" y1="12" x2="68" y2="12" stroke="currentColor" stroke-width="1.5"/>
+          <polyline points="60,5 70,12 60,19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="corp-step reveal">
+        <div class="corp-img"><img src="corp-04-final.jpg" alt="Objeto finalizado con materiales y color" /></div>
+        <div class="corp-num">04</div>
+        <h3 class="corp-title">Objeto finalizado</h3>
+        <p class="corp-desc">Materializado acorde a la propuesta.</p>
       </div>
     </div>
   </section>
