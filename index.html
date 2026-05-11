@@ -632,6 +632,7 @@
     width: 60px;
     height: auto;
   }
+  .corp-arrow .arrow-v { display: none; }
 
   /* ============ CONTACT ============ */
   .contact-section {
@@ -825,11 +826,12 @@
       gap: 14px;
     }
     .corp-arrow {
-      transform: rotate(90deg);
       padding: 8px 0;
-      height: 40px;
+      transform: none;
+      height: auto;
     }
-    .corp-arrow svg { width: 60px; }
+    .corp-arrow .arrow-h { display: none; }
+    .corp-arrow .arrow-v { display: block; width: 24px; height: 60px; }
     .corp-img { aspect-ratio: 16 / 10; }
     .corp-step { padding: 14px 14px 20px; }
 
@@ -1139,9 +1141,13 @@
       </div>
 
       <div class="corp-arrow reveal" aria-hidden="true">
-        <svg viewBox="0 0 80 24" fill="none">
+        <svg class="arrow-h" viewBox="0 0 80 24" fill="none">
           <line x1="0" y1="12" x2="68" y2="12" stroke="currentColor" stroke-width="1.5"/>
           <polyline points="60,5 70,12 60,19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="arrow-v" viewBox="0 0 24 80" fill="none">
+          <line x1="12" y1="0" x2="12" y2="68" stroke="currentColor" stroke-width="1.5"/>
+          <polyline points="5,60 12,70 19,60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
 
@@ -1153,9 +1159,13 @@
       </div>
 
       <div class="corp-arrow reveal" aria-hidden="true">
-        <svg viewBox="0 0 80 24" fill="none">
+        <svg class="arrow-h" viewBox="0 0 80 24" fill="none">
           <line x1="0" y1="12" x2="68" y2="12" stroke="currentColor" stroke-width="1.5"/>
           <polyline points="60,5 70,12 60,19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="arrow-v" viewBox="0 0 24 80" fill="none">
+          <line x1="12" y1="0" x2="12" y2="68" stroke="currentColor" stroke-width="1.5"/>
+          <polyline points="5,60 12,70 19,60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
 
@@ -1167,9 +1177,13 @@
       </div>
 
       <div class="corp-arrow reveal" aria-hidden="true">
-        <svg viewBox="0 0 80 24" fill="none">
+        <svg class="arrow-h" viewBox="0 0 80 24" fill="none">
           <line x1="0" y1="12" x2="68" y2="12" stroke="currentColor" stroke-width="1.5"/>
           <polyline points="60,5 70,12 60,19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="arrow-v" viewBox="0 0 24 80" fill="none">
+          <line x1="12" y1="0" x2="12" y2="68" stroke="currentColor" stroke-width="1.5"/>
+          <polyline points="5,60 12,70 19,60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
 
