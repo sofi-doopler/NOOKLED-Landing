@@ -225,7 +225,7 @@
     overflow: hidden;
     background: var(--bg-elev);
     aspect-ratio: 9 / 16;
-    max-width: 480px;
+    max-width: 360px;
     justify-self: center;
     border: 1px solid var(--line);
   }
@@ -738,11 +738,40 @@
     line-height: 1.7;
   }
   .footer-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    text-decoration: none;
+    color: var(--ink-dim);
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  .footer-end:hover {
+    color: var(--lime);
+  }
+  .footer-end:hover .footer-doopler-logo {
+    transform: translateY(-2px);
+  }
+  .footer-end-text {
     text-align: right;
     font-family: var(--mono);
     font-size: 11px;
-    color: var(--ink-dim);
     letter-spacing: 0.15em;
+    line-height: 1.7;
+  }
+  .footer-end-text strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .footer-end:hover .footer-end-text strong {
+    color: var(--lime);
+  }
+  .footer-doopler-logo {
+    height: 64px;
+    width: auto;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.25s ease;
   }
 
   /* ============ Reveal animation ============ */
@@ -802,7 +831,10 @@
 
     footer { grid-template-columns: 1fr; gap: 24px; text-align: left; }
     .footer-mid, .footer-end { text-align: left; }
+    .footer-end { justify-content: flex-start; }
+    .footer-end-text { text-align: left; }
     .footer-brand img { height: 48px; }
+    .footer-doopler-logo { height: 48px; }
   }
 </style>
 </head>
@@ -831,16 +863,17 @@
 
     <div>
       <h1 class="hero-title">
-        Contenido<br>
+        Contenido 3D<br>
         que <span class="accent">sale</span><br>
         de la pantalla.
       </h1>
 
       <div class="hero-bottom">
         <p class="hero-desc reveal">
-          Somos los <strong>únicos</strong> especialistas en <strong>Corner LED</strong> en Argentina.
-          Pantallas de alta densidad que se pliegan en 90° y contenido <strong>anamórfico 3D</strong>
-          producido in-house para que tu marca aparezca donde nadie más puede ponerla.
+          Nos dedicamos al <strong>rental de pantallas LED</strong> y la generación
+          de <strong>contenido 3D específico</strong> para que tu marca aparezca
+          donde nadie más puede ponerla. Somos los únicos especialistas en
+          <strong>Corner LED</strong> en Argentina.
         </p>
         <div class="hero-actions reveal">
           <a href="#contacto" class="btn-primary">
@@ -900,8 +933,8 @@
   <section id="trabajos">
     <div class="section-label reveal">Ejemplos</div>
     <h2 class="section-title reveal">
-      Con paneles modulares,<br>
-      <em>armá</em> tu pantalla como quieras.
+      Con paneles modulares, <em>armá</em><br>
+      la pantalla como quieras para tu evento.
     </h2>
 
     <div class="works-wrap">
@@ -1072,12 +1105,15 @@
       <div class="corp-header-text">
         <h2 class="section-title reveal">
           <em>Acompañá</em> tu pantalla<br>
-          con un objeto físico.
+          con un objeto físico sin límite de tamaño.
         </h2>
         <p class="section-lead reveal">
-          Hacé resaltar tu marca con un objeto corpóreo personalizado para tu branding.
-          Hacemos diseño e impresiones en 3D de todo tipo de tamaños y texturas.
-          Contanos tu idea y te asesoramos sobre los materiales más adecuados para tu proyecto.
+          <strong>Imaginación sin límites.</strong> Hacé resaltar tu marca con
+          un objeto corpóreo personalizado para tu branding. Diseñamos e imprimimos
+          en 3D todo tipo de tamaños, formas y texturas — desde una pieza chica
+          para vidriera hasta una escultura monumental para tu evento. Contanos
+          tu idea y te asesoramos sobre los materiales más adecuados para
+          materializarla.
         </p>
       </div>
       <div class="corp-header-image reveal">
@@ -1218,10 +1254,13 @@
     BUENOS AIRES — ARGENTINA<br>
     © 2026
   </div>
-  <div class="footer-end reveal">
-    NOOK.LED.COM<br>
-    BY DOOPLERSTUDIO
-  </div>
+  <a href="https://www.dooplerstudio.com/" class="footer-end reveal" target="_blank" rel="noopener">
+    <div class="footer-end-text">
+      NOOKLED.COM<br>
+      BY <strong>DOOPLERSTUDIO</strong>
+    </div>
+    <img src="doopler-logo.png" alt="Doopler Studio" class="footer-doopler-logo" />
+  </a>
 </footer>
 
 <script>
