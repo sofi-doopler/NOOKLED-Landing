@@ -634,6 +634,72 @@
   }
   .corp-arrow .arrow-v { display: none; }
 
+  /* ============ INTERACTIVO ============ */
+  .interactivo-section {
+    text-align: center;
+  }
+  .interactivo-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .interactivo-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+  }
+  .interactivo-title em {
+    color: var(--lime);
+    font-weight: 600;
+  }
+  .interactivo-lead {
+    color: var(--ink-dim);
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 680px;
+    margin: 0 auto 64px;
+  }
+  .interactivo-video {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    aspect-ratio: 16 / 9;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .interactivo-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .interactivo-video::before {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 36px; height: 36px;
+    border-top: 2px solid var(--lime);
+    border-right: 2px solid var(--lime);
+    border-top-right-radius: 18px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .interactivo-video::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: -1px;
+    width: 36px; height: 36px;
+    border-bottom: 2px solid var(--lime);
+    border-left: 2px solid var(--lime);
+    border-bottom-left-radius: 18px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
   /* ============ CONTACT ============ */
   .contact-section {
     background: var(--bg-elev);
@@ -839,6 +905,9 @@
     .channel-card { padding: 28px 16px; }
     .contact-cta { margin-bottom: 56px; }
 
+    .interactivo-lead { font-size: 15px; margin-bottom: 40px; }
+    .interactivo-video { border-radius: 14px; }
+
     footer { grid-template-columns: 1fr; gap: 24px; text-align: left; }
     .footer-mid, .footer-end { text-align: left; }
     .footer-end { justify-content: flex-start; }
@@ -858,6 +927,7 @@
     <a href="#trabajos">Ejemplos</a>
     <a href="#proceso">Proceso</a>
     <a href="#corporeo">Corpóreo</a>
+    <a href="#interactivo">Interactivo</a>
     <a href="#contacto" class="nav-cta">Cotizar</a>
   </div>
 </nav>
@@ -1200,19 +1270,29 @@
     </div>
   </section>
 
+  <!-- ============ INTERACTIVO ============ -->
+  <section id="interactivo" class="interactivo-section">
+    <div class="interactivo-wrap">
+      <div class="section-label reveal" style="justify-content:center; margin: 0 auto 32px; display:inline-flex;">Interactivo</div>
+      <h2 class="interactivo-title reveal">
+        Contanos qué <em>imaginás</em>,<br>
+        nosotros lo hacemos posible.
+      </h2>
+      <p class="interactivo-lead reveal">
+        Con más de 10 años en la industria audiovisual, innovamos con
+        nuevas tecnologías para hacer tu idea realidad.
+      </p>
+      <div class="interactivo-video reveal">
+        <video autoplay muted loop playsinline>
+          <source src="interactivo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CONTACT ============ -->
   <section id="contacto" class="contact-section">
     <div class="contact-wrap-simple">
-      <div class="section-label reveal" style="justify-content:center; margin: 0 auto 32px; display:inline-flex;">Cotizá tu proyecto</div>
-      <h2 class="contact-title reveal">
-        Contanos qué <em>imaginaste</em>.<br>
-        Lo hacemos posible.
-      </h2>
-      <p class="contact-lead reveal">
-        Escribinos por WhatsApp para una respuesta rápida o mandanos los detalles
-        de tu proyecto por mail. Respondemos cotizaciones en 48hs hábiles.
-      </p>
-
       <a href="https://wa.me/541135754523" class="btn-primary contact-cta reveal" target="_blank" rel="noopener">
         Escribinos por WhatsApp
         <span class="arrow">→</span>
